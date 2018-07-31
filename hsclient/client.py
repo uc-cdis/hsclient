@@ -45,6 +45,7 @@ class HSClient(object):
             return None
 
     def _get(self, *path, **kwargs):
+        print("URL is {}".format(self.url_for(*path)))
         resp = requests.get(self.url_for(*path), timeout=15, **kwargs)
         handle_error(resp)
         return resp
