@@ -33,7 +33,7 @@ class HSClient(object):
     def get(self, did):
         """Return a document object corresponding to a single did"""
         try:
-            response = self._get("sysmeta", did)
+            response = self._get("sysmeta", did, "?format=json")
         except requests.HTTPError as e:
             if e.response.status_code == 404:
                 return None
