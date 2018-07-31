@@ -60,7 +60,7 @@ class Document(object):
         self._fetched = False
         self._load(json)
 
-    def _render(self, include_rev=True):
+    def _render(self, include_rev=False):
         if not self._fetched:
             raise RuntimeError("Document must be fetched from server before being rendered as json")
         json = {
@@ -72,7 +72,7 @@ class Document(object):
             json["rev"] = self.rev
         return json
 
-    def to_json(self, include_rev=True):
+    def to_json(self, include_rev=False):
         json = self._render(include_rev=include_rev)
         json["did"] = self.did
         return json
