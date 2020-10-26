@@ -4,5 +4,3 @@ HSClient
 
 This is the client library for making requests to the Commons Share
 platform and returning an Indexd compatible document.
-
-

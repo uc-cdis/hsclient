@@ -1,10 +1,12 @@
 import json
 
+
 def test_import():
-    '''
+    """
     Try to import the index package.
-    '''
+    """
     import hsclient
+
 
 def test_load1():
     """
@@ -45,6 +47,6 @@ def test_load1():
 
     from hsclient.client import HSClient
     from hsclient.client import Document
+
     client = HSClient("https://test.example/index")
     doc = Document(client, "f7f091dc65a2432da285a7b70d07b333", json.loads(jsonstring))
-    
