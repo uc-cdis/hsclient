@@ -1,4 +1,5 @@
 import json
+
 try:
     from urlparse import urljoin
 except ImportError:
@@ -23,7 +24,6 @@ def handle_error(resp):
 
 
 class HSClient(object):
-
     def __init__(self, baseurl):
         self.url = baseurl
 
@@ -49,8 +49,8 @@ class HSClient(object):
         handle_error(resp)
         return resp
 
-class Document(object):
 
+class Document(object):
     def __init__(self, client, did, json=None):
         self.client = client
         self.did = did
@@ -61,12 +61,10 @@ class Document(object):
 
     def _render(self, include_rev=False):
         if not self._fetched:
-            raise RuntimeError("Document must be fetched from server before being rendered as json")
-        json = {
-            "urls": self.urls,
-            "hashes": self.hashes,
-            "size": self.size
-        }
+            raise RuntimeError(
+                "Document must be fetched from server before being rendered as json"
+            )
+        json = {"urls": self.urls, "hashes": self.hashes, "size": self.size}
         if include_rev:
             json["rev"] = self.rev
         return json
@@ -81,15 +79,15 @@ class Document(object):
         json = json or self.client._get(self.did).json()
         assert json["resource_id"].lower() == self.did.lower()
         self.urls = []
-        if 'resource_url' in json:
-            self.urls = [json['resource_url']]
-            self.urls_metadata = {json['resource_url']:""}
+        if "resource_url" in json:
+            self.urls = [json["resource_url"]]
+            self.urls_metadata = {json["resource_url"]: ""}
 
-        if 'date_last_updated' in json:
-            self.updated_data = json['date_last_updated']
+        if "date_last_updated" in json:
+            self.updated_data = json["date_last_updated"]
 
-        if 'date_created' in json:
-            self.created_data = json['date_created']
+        if "date_created" in json:
+            self.created_data = json["date_created"]
 
         self.file_name = None
 
@@ -98,4 +96,3 @@ class Document(object):
         self.hashes = {}
 
         self._fetched = True
-

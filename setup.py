@@ -1,12 +1,12 @@
 from setuptools import setup
 
 setup(
-    name='hsclient',
-    version='0.1',
+    name="hsclient",
+    version="0.1",
     packages=[
-        'hsclient',
+        "hsclient",
     ],
     install_requires=[
-        'requests>=2.5.2,<3.0.0',
+        "requests>=2.5.2,<3.0.0",
     ],
 )
